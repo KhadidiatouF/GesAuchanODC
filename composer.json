@@ -1,0 +1,22 @@
+{
+    "name": "projetechauffement/composer",
+    "description": "echauffementChallenge",
+    "autoload": {
+        "psr-4": {
+
+            "App\\entity\\":"src/App/entity/",
+            "App\\controller\\":"src/controller/",
+            "App\\config\\":"config/core/"
+
+
+
+        }
+    },
+    "authors": [
+        {
+            "name": "Khadidiatou",
+            "email": "jamiral2019@gmail.com"
+        }
+    ],
+    "require": {}
+}
