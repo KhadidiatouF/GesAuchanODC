@@ -16,7 +16,7 @@ class Produit{
 
 
      public static  function toObject(array $data):static{
-        return  new static(
+        return  new self(
            $data ['id'],
            $data['prix']
 
@@ -26,10 +26,11 @@ class Produit{
 
 
     public function toArray():array{
-        return [   
-        'id'=>$this->getId(),
-        'prix'=>$this->getPrix()
+        $produit= [   
+        'id'=>$this->id,
+        'prix'=>$this->prix
         ];
+        return $produit;
     }
 
 

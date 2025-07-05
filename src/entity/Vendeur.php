@@ -6,8 +6,6 @@ use App\entity\TypeEnum;
 class Vendeur extends Personne{
 
    private int $matricule;
-   private string $login;
-   private string $mdp;
    protected TypeEnum $type;
    private array $commande;
    private array $paiement;
@@ -16,10 +14,8 @@ class Vendeur extends Personne{
 
    public function __construct( $id=null, $nom='' ,$prenom='',$matricule=0,$login='',$mdp='',TypeEnum $type = TypeEnum::Vendeur)
    {
-        parent::__construct($id, $nom ,$prenom,$type);  
+        parent::__construct($id, $nom ,$prenom,$login,$mdp,$type);  
         $this->matricule = $matricule;
-        $this->login = $login;
-        $this->mdp = $mdp;
         $this->commande=[];
         $this->paiement=[];
 

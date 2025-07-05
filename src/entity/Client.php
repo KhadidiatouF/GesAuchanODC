@@ -9,22 +9,24 @@ class Client extends Personne {
    private array $commandes;
 
 
-   public function __construct( $id=null, $nom='' ,$prenom='',$telephone='',TypeEnum $type = TypeEnum::Client)
+   public function __construct( $id=null, $nom='' ,$prenom='',$telephone='',$login='',$mdp='',TypeEnum $type = TypeEnum::Client)
    {
-        parent::__construct($id, $nom ,$prenom,$type);  
+        parent::__construct($id, $nom ,$prenom,$login,$mdp,$type);  
         $this->telephone = $telephone;
-      
        $this->commandes=[];
    }
 
 
     public static  function toObject(array $data):static{
-        return  new static(
+        return  new self(
            $data ['id'],
            $data ['nom'],
            $data ['prenom'],
            $data ['type'],
+           $data ['login'],
+           $data ['mdp'],
            $data ['telephone'],
+
         
         ); 
     }
@@ -40,34 +42,6 @@ class Client extends Personne {
 
 
 
-   //  public static  function toObject(array $data):static{
-   //      $personne = parent::toObject($data);
-   //      $personne->setTelephone($data['telephone']);
-   //      return $personne;
-
-   //  }
-
-  
-   //  public static  function toObject(array $data):static{
-
-   //      return  new static(
-   //         $data ['id'],
-   //         $data['date'],
-   //         $data['statut'],
-   //      //    paiement: array_map(fn($paiement): Paiement => Paiement::toObject($paiement),$data['paiement'])
-            
-
-   //      );
-        
-   //  }
-
-   //  public function toArray():array{
-   //      $parentArray = parent::toArray();
-   //      $parentArray['telephone'] = $this->getTelephone();
-   //      $parentArray['commandes'] = array_map(fn($commande)=>$commande->toArray(), $this->getCommandes());
-   //      return $parentArray;
-
-   //  }
 
   
    public function getTelephone()
@@ -118,4 +92,34 @@ class Client extends Personne {
 
       return $this;
    }
+
+
+   //  public static  function toObject(array $data):static{
+   //      $personne = parent::toObject($data);
+   //      $personne->setTelephone($data['telephone']);
+   //      return $personne;
+
+   //  }
+
+  
+   //  public static  function toObject(array $data):static{
+
+   //      return  new static(
+   //         $data ['id'],
+   //         $data['date'],
+   //         $data['statut'],
+   //      //    paiement: array_map(fn($paiement): Paiement => Paiement::toObject($paiement),$data['paiement'])
+            
+
+   //      );
+        
+   //  }
+
+   //  public function toArray():array{
+   //      $parentArray = parent::toArray();
+   //      $parentArray['telephone'] = $this->getTelephone();
+   //      $parentArray['commandes'] = array_map(fn($commande)=>$commande->toArray(), $this->getCommandes());
+   //      return $parentArray;
+
+   //  }
 }

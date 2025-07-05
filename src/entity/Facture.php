@@ -21,8 +21,8 @@ class Facture extends AbstactEntity{
     public function __construct($id=null,$date='',StatutEnum $statut= StatutEnum::Paye, $montant='', $montantRestant='')
     {
         $this->id = $id;
-        $this-> statut = $statut;
         $this -> date = $date;
+        $this-> statut = $statut;
         $this -> montant = $montant;
         $this -> montantRestant = $montantRestant;
         $this -> commande = new Commande();
@@ -32,31 +32,32 @@ class Facture extends AbstactEntity{
 
 
 
-    public static  function toObject(array $data):static{
-        $commande = new Commande($data ['facture_id']);
+  
 
-        return  new static(
+
+    public static  function toObject(array $data):static{
+        // $commande = new Commande($data ['facture_id']);
+        return  new self(
            $data ['id'],
            $data['date'],
            $data['statut'],
-           $commande,
-        //    paiement: array_map(fn($paiement): Paiement => Paiement::toObject($paiement),$data['paiement'])
-            
-
+           $data['montant'],
+           $data['montantRestant'],
+        //    $commande,
         );
         
     }
 
 
     public function toArray():array{
-        return [   
-        'id'=>$this->getId(),
-        'date'=>$this->getDate(),
-        'statut'=>$this->getStatut(),
-        'commande'=>$this->getCommande(),
-        'paiement' => array_map(fn($paiement) => $paiement->toArray(), $this->paiement),
-
+        $facture = [   
+        "id"=> $this->id,
+        "date"=> $this->date,
+        "statut"=> $this->statut,
+        "commande"=> $this->commande,
+        'paiement' =>  $this->paiement
         ];
+        return $facture;
     }
    
 
@@ -126,5 +127,45 @@ class Facture extends AbstactEntity{
     {
         return $this->paiement[]=$paiement;
        
+    }
+
+    /**
+     * Get the value of montant
+     */ 
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
+     * Set the value of montant
+     *
+     * @return  self
+     */ 
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of montantRestant
+     */ 
+    public function getMontantRestant()
+    {
+        return $this->montantRestant;
+    }
+
+    /**
+     * Set the value of montantRestant
+     *
+     * @return  self
+     */ 
+    public function setMontantRestant($montantRestant)
+    {
+        $this->montantRestant = $montantRestant;
+
+        return $this;
     }
 }

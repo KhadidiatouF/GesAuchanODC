@@ -17,16 +17,14 @@ class Paiement{
         $this->id = $id;
         $this->date=$date;
         $this->montantVerser=$montantVerser;
-        // $this->facture=new Facture();
+        $this->facture=new Facture();
         $this->vendeur=new Vendeur();
 
    }
 
 
-
-
     public static  function toObject(array $data):static{
-        return  new static(
+        return  new self(
            $data ['id'],
            $data['date'],
            $data['montantVerser']
@@ -35,15 +33,16 @@ class Paiement{
         
     }
 
-
     public function toArray():array{
-        return [   
-        'id'=>$this->getId(),
-        'date'=>$this->getDate(),
-        'montantVerser'=>$this->getMontantVerser()
-
+        $paiement =  [   
+        'id'=>$this->id,
+        'date'=>$this->date,
+        'montantVerser'=>$this->montantVerser,
+        'facture'=>$this->facture,
+        'vendeur'=>$this->vendeur,
        
         ];
+        return $paiement;
     }
    
 

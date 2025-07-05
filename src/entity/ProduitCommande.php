@@ -8,42 +8,53 @@ class ProduitCommande{
 
 
 
-    public function __construct($id=null,$qteComDe='',$montant='',  $commande, $produit)
+    public function __construct($id=null,$qteComDe='',$montant='')
     {
         $this->id = $id;
         $this->qteComDe = $qteComDe;
         $this->montant = $montant;
-        $this->commande = $commande;
-        $this->produit = $produit;
+        $this->commande = new Commande;
+        $this->produit = new Produit;
 
     }
 
 
+    //   public static  function toObject(array $data):static{
+    //     // $commande = new Commande( id: $data ['commande_id']);
+    //     // $produit = new Produit( id : $data ['produit_id']);
+    //     return  new static(
+
+    //        $data ['id'],
+    //        $data['qteComDe'],
+    //        $data['montant'],
+    //     //    $commande,
+    //     //    $produit
+    //     );
+        
+    // }
   
      public static  function toObject(array $data):static{
-        $commande = new Commande( id: $data ['commande_id']);
-        $produit = new Produit( id : $data ['produit_id']);
-        return  new static(
-
+        return  new self(
            $data ['id'],
            $data['qteComDe'],
            $data['montant'],
-           $commande,
-           $produit
+     
         );
         
     }
 
 
     public function toArray():array{
-        return [   
-        'id'=>$this->getId(),
-        'qteComDe'=>$this->getQteComDe(),
-        'montant'=>$this->getMontant(),
-        'commande'=>$this->getCommande(),
-        'produit'=>$this->getProduit()
+        $produitCommande= [   
+        'id'=>$this->id,
+        'qteComDe'=>$this->qteComDe,
+        'montant'=>$this->montant,
+        'commande'=>$this->commande,
+        'produit'=>$this->produit
 
         ];
+
+        return $produitCommande;
     }
 
 
