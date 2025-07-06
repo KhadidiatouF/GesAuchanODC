@@ -18,7 +18,7 @@ class Facture extends AbstactEntity{
 
 
 
-    public function __construct($id=null,$date='',StatutEnum $statut= StatutEnum::Paye, $montant='', $montantRestant='')
+    public function __construct($id=0,$date='',StatutEnum $statut= StatutEnum::Paye, $montant='', $montantRestant='')
     {
         $this->id = $id;
         $this -> date = $date;

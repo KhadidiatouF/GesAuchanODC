@@ -1,4 +1,5 @@
 <?php
+namespace App\entity;
 
 use App\entity\Personne;
 use App\entity\TypeEnum;
@@ -9,9 +10,9 @@ class Client extends Personne {
    private array $commandes;
 
 
-   public function __construct( $id=null, $nom='' ,$prenom='',$telephone='',$login='',$mdp='',TypeEnum $type = TypeEnum::Client)
+   public function __construct( $id=0, $nom='' ,$telephone='',$login='',$mdp='')
    {
-        parent::__construct($id, $nom ,$prenom,$login,$mdp,$type);  
+        parent::__construct($id, $nom ,$login,$mdp,TypeEnum::Client);  
         $this->telephone = $telephone;
        $this->commandes=[];
    }
@@ -21,11 +22,10 @@ class Client extends Personne {
         return  new self(
            $data ['id'],
            $data ['nom'],
-           $data ['prenom'],
-           $data ['type'],
+           $data ['telephone'],
            $data ['login'],
            $data ['mdp'],
-           $data ['telephone'],
+           $data ['type'],
 
         
         ); 

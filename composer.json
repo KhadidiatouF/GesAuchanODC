@@ -4,9 +4,13 @@
     "autoload": {
         "psr-4": {
 
-            "App\\entity\\":"src/App/entity/",
+            "App\\entity\\":"src/entity/",
             "App\\controller\\":"src/controller/",
-            "App\\config\\":"config/core/"
+            "App\\config\\":"config/core/",
+            "App\\service\\":"src/service/",
+            "App\\repository\\":"src/repository/"
+
+
 
 
 

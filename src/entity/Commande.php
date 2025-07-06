@@ -1,7 +1,9 @@
 <?php
 
 use App\config\AbstactEntity;
+use App\entity\Client;
 use App\entity\StatutEnum;
+use App\entity\Vendeur;
 
 class Commande  extends AbstactEntity{
     private int $id ;
@@ -14,7 +16,7 @@ class Commande  extends AbstactEntity{
 
 
 
-   public function __construct( $id=null,$date='')
+   public function __construct( $id=0,$date='')
    {
         $this->id = $id;
         $this->date=$date;

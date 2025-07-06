@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use App\entity\Vendeur;
 
 class Paiement{
     private int $id ;
@@ -12,7 +14,7 @@ class Paiement{
 
 
 
-   public function __construct( $id=null,$date='',$montantVerser='')
+   public function __construct( $id=0,$date='',$montantVerser='')
    {
         $this->id = $id;
         $this->date=$date;

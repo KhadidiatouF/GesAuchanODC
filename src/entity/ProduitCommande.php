@@ -8,7 +8,7 @@ class ProduitCommande{
 
 
 
-    public function __construct($id=null,$qteComDe='',$montant='')
+    public function __construct($id=0,$qteComDe='',$montant='')
     {
         $this->id = $id;
         $this->qteComDe = $qteComDe;

@@ -1,4 +1,5 @@
 
+
 <body class="font-sans antialiased flex bg-[#2C2C2C] items-center justify-center min-h-screen p-4">
 
     <main class="w-full max-w-md bg-[#4F4F4F] rounded-lg shadow-xl p-8 sm:p-10">
@@ -6,11 +7,16 @@
         <h2 class="text-3xl font-bold text-center mb-6 text-white">Connexion</h2>
         <p class="text-center text-white mb-8">Connectez-vous à votre compte</p>
 
-        <form  action="/retourListe">
+
+        
+
+        <form  action="/login" method="post">
             <div class="mb-5">
                 <label for="email" class="block text-sm font-medium text-white mb-2">Adresse E-mail</label>
                 <input type="email" id="email" name="email" placeholder="Votre adresse email" required
                        class="block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 input-dark">
+
+                       
             </div>
 
             <div class="mb-6">

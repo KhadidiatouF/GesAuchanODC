@@ -8,17 +8,15 @@ use App\config\AbstactEntity ;
 abstract class  Personne  extends AbstactEntity{
     protected int $id;
     protected string $nom;
-    protected string $prenom;
     protected string $login;
     protected string $mdp;
     protected TypeEnum $type;
 
 
 
-    public function __construct($id = null, $nom = '',$prenom ='',$login='',$mdp='', TypeEnum $type) {
+    public function __construct($id = 0, $nom = '',$login='',$mdp='', TypeEnum $type) {
         $this->id = $id;
         $this->nom = $nom;
-        $this->prenom = $prenom;
         $this->login = $login;
         $this->mdp = $mdp;
         $this->type = $type;
@@ -33,10 +31,9 @@ abstract class  Personne  extends AbstactEntity{
         return  new self(
            $data ['id'],
            $data['nom'],
-           $data['prenom'],
-           $data['type'],
            $data['login'],
            $data['mdp'],
+           $data['type']
         );
         
     }
@@ -46,7 +43,6 @@ abstract class  Personne  extends AbstactEntity{
         return [   
         'id'=>$this->getId(),
         'nom'=>$this->getNom(),
-        'prenom'=>$this->getPrenom(),
         'login'=>$this->getLogin(),
         'mdp'=>$this->getMdp(),
         'type'=>$this->getType()
@@ -79,22 +75,11 @@ abstract class  Personne  extends AbstactEntity{
     }
 
  
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
+ 
    
     public function getType()
     {
-        return $this->type;
+        return $this->type->value;
     }
 
   

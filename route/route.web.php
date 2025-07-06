@@ -1,8 +1,8 @@
 <?php
 
+use App\controller\ClientController;
 use App\controller\CommandeController;
 use App\controller\ConnexionController;
-use App\controller\errorController;
 use App\controller\FactureController;
 use App\controller\SecurityController;
 
@@ -12,6 +12,11 @@ use App\controller\SecurityController;
             "/deconnexion"=>["controller"=>SecurityController::class, "action"=>"deconnexion"],
 
             "/retourListe"=>["controller"=>CommandeController::class, "action"=>"index"],
+            
+            "/commandeClient"=>["controller"=>ClientController::class, "action"=>"index"],
+
+            "/login"=>["controller"=>SecurityController::class, "action"=>"login"],
+
 
 
             "/addCommande"=>["controller"=>CommandeController::class, "action"=>"create"],

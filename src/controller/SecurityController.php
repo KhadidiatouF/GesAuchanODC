@@ -3,17 +3,58 @@
 namespace App\controller;
 
 use App\config\AbstractController;
-use SecurityService;
+use App\config\Validator;
+use App\service\SecurityService;
 
 class SecurityController extends AbstractController{
 
-    private $securityService;
+    private SecurityService $securityService;
 
-
-
-    
 
     public function login(){
+
+
+        $email= $_POST['email'];
+        $password= $_POST['password'];
+
+        $user = $this->securityService->seConnecter($email,$password);
+
+
+        Validator::isEmail($email, 'email', 'Email invalide');
+        Validator::isEmpty($password, 'password', 'Mot de passe requis');
+
+            // var_dump($user);die;
+
+        if ($user && $email == $user->getLogin() && $password == $user-> getMdp()) {
+
+                // var_dump($user->getType()->value);die;
+
+            if (trim($user->getType()->value) =='Client') {
+                header("Location: http://localhost:8000/commandeClient"); 
+                exit;  
+                
+            }
+            // var_dump($user->getType()->value);die;
+            if (trim($user->getType()->value) =='Vendeur') {
+                header("Location: http://localhost:8000/retourListe");  
+                exit;  
+                
+            }
+
+        } else {
+        
+             header("Location: http://localhost:8000/");   
+                exit;  
+
+
+        }
+        // if ($email == $user->getLogin() && $password == $user-> getMdp()) {
+        //      header("Location: http://localhost:8000/retourListe");   
+        // }else {
+        //      header("Location: http://localhost:8000/");   
+
+        // 
+
 
     }
 
@@ -25,7 +66,7 @@ class SecurityController extends AbstractController{
     public function __construct()
     {
         $this->layout= 'security.layout.php';
-    //    $this->securityService = new SecurityService();
+        $this->securityService = new SecurityService();
 
         
     }

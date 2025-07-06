@@ -9,8 +9,7 @@
       <div class="flex space-x-8">
         <a href="#" class="text-gray-text hover:text-white transition-colors">Dashboard</a>
         <a href="#" class="text-white font-medium">Commandes</a>
-        <a href="#" class="text-gray-text hover:text-white transition-colors">Clients</a>
-        <a href="#" class="text-gray-text hover:text-white transition-colors">Produits</a>
+   
 
         <a href="/">
            <div class=""><i class="fa-solid fa-right-from-bracket text-red-500"></i></div>

@@ -1,21 +1,19 @@
 <?php
-
+namespace App\entity;
 use App\entity\Personne;
 use App\entity\TypeEnum;
 
 class Vendeur extends Personne{
 
-   private int $matricule;
    protected TypeEnum $type;
    private array $commande;
    private array $paiement;
 
 
 
-   public function __construct( $id=null, $nom='' ,$prenom='',$matricule=0,$login='',$mdp='',TypeEnum $type = TypeEnum::Vendeur)
+   public function __construct( $id=0, $nom='' ,$login='',$mdp='')
    {
-        parent::__construct($id, $nom ,$prenom,$login,$mdp,$type);  
-        $this->matricule = $matricule;
+        parent::__construct($id, $nom ,$login,$mdp,TypeEnum::Vendeur);  
         $this->commande=[];
         $this->paiement=[];
 
@@ -27,17 +25,15 @@ class Vendeur extends Personne{
         return  new self(
            $data ['id'],
            $data ['nom'],
-           $data ['prenom'],
-           $data ['type'],
-           $data ['matricule'],
            $data['login'],
-           $data['mdp']
+           $data['mdp'],
+           $data ['type'],
+
         ); 
     }
 
     public  function toArray():array{
       $personnes=[
-         "matricule"=> $this->matricule,
          "login"=> $this->login,
          "mdp"=> $this->mdp,
          "commande"=> $this->commande,
@@ -61,19 +57,6 @@ class Vendeur extends Personne{
       // }
 
 
-
-
-   public function getMatricule()
-   {
-      return $this->matricule;
-   }
-
-   public function setMatricule($matricule)
-   {
-      $this->matricule = $matricule;
-
-      return $this;
-   }
 
  
    public function getLogin()
