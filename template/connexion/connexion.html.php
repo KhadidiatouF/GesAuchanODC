@@ -10,7 +10,7 @@
 
         
 
-        <form  action="/login" method="post">
+        <form  action="<?php $url ?>login"  method="post">
             <div class="mb-5">
                 <label for="email" class="block text-sm font-medium text-white mb-2">Adresse E-mail</label>
                 <input type="email" id="email" name="email" placeholder="Votre adresse email" required

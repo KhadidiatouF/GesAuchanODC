@@ -50,7 +50,6 @@ class Commande  extends AbstactEntity{
         return [   
         'id'=>$this->getId(),
         'date'=>$this->getDate(),
-        'facture' => $this->facture->toArray(),
         'client' => $this->client->toArray(),
         'vendeur' => $this->vendeur->toArray(),
         'facture' => $this->facture->toArray(),

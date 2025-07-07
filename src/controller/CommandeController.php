@@ -3,8 +3,12 @@
 namespace App\controller;
 
 use App\config\AbstractController ;
+use App\repository\CommandeRepository;
 
  class CommandeController extends AbstractController {
+
+    private CommandeRepository $commandeRepository;
+
 
 
     public function form(){
@@ -13,7 +17,8 @@ use App\config\AbstractController ;
     }
 
     public function liste(){
-        // $this->renderHtml('commandes/list.html.php');
+  
+    
 
 
     }
@@ -25,13 +30,26 @@ use App\config\AbstractController ;
 
     // }
 
-
     public function index() {
-        $this->renderHtml('commandes/list.html.php');
+    $commandeRepository = new CommandeRepository();
+    $commandes = $commandeRepository->findAll();
 
-        // require_once '../template/commandes/list.html.php';
+    $this->renderHtml('commandes/list.html.php', [
+        'commandes' => $commandes
+    ]);
+}
 
-    }
+
+
+    // public function index() {
+    //     $this->renderHtml('commandes/list.html.php');
+
+    //      $commandeRepository = new CommandeRepository();
+    //     $commandes = $commandeRepository->findAll();
+
+    //     // require_once '../template/commandes/list.html.php';
+
+    // }
 
      public function destroy(){}
 

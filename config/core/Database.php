@@ -9,13 +9,22 @@ class Database {
 
     public static function  getConnexion(): PDO{
       if (self::$pdo === null) {
-            $host = 'localhost';
-            $dbname = 'GesAuchan';
-            $user = 'khadija';
-            $pass = 'khadijaf'; 
 
-            $dsn = "mysql:host=$host;
-            port=3306;
+
+
+            $host = $_ENV['DB_HOST'];
+            $dbname = $_ENV['DB_NAME'];
+            $user = $_ENV['DB_USER'];
+            $pass = $_ENV['DB_PASS']; 
+            $port=$_ENV['DB_PORT'];
+            
+
+            // $host = 'localhost';
+            // $dbname = 'GesAuchan';
+            // $user = 'khadija';
+            // $pass = 'khadijaf'; 
+             $dsn = "mysql:host=$host;
+             port=3306;
             
             dbname=$dbname";
             try {

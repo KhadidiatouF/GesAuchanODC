@@ -57,14 +57,32 @@
                 <table class="w-full">
                     <thead class="bg-gray-700 border-b border-gray-600">
                         <tr>
-                            <th class="text-left py-4 px-6 font-medium text-gray-300">Numéro Commande</th>
-                            <th class="text-left py-4 px-6 font-medium text-gray-300">Client</th>
+                            <th class="text-left py-4 px-6 font-medium text-gray-300">ID</th>
+                            <th class="text-left py-4 px-6 font-medium text-gray-300">Nom</th>
                             <th class="text-left py-4 px-6 font-medium text-gray-300">Statut</th>
                             <th class="text-left py-4 px-6 font-medium text-gray-300">Facture</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-700">
-                        <tr class="hover:bg-gray-750 transition-colors">
+                        
+
+                        <pre>
+                          <?php var_dump($commandes); ?>
+                        </pre>
+
+
+                                  <?php if (!empty($commandes)) : ?>
+                                        <?php foreach ($commandes as $commande) : ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($commande['id']) ?></td>
+                                                <td><?= htmlspecialchars($commande['client_nom']) ?></td>
+                                                <td><?= htmlspecialchars($commande['statut']) ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <tr><td colspan="3">Aucune commande trouvée</td></tr>
+                                    <?php endif; ?>
+                        <!-- <tr class="hover:bg-gray-750 transition-colors">
                             <td class="py-4 px-6 text-white">#COM_001</td>
                             <td class="py-4 px-6 text-white">BAKARY DIASSY</td>
                             <td class="py-4 px-6">
@@ -100,7 +118,7 @@
                                     voir
                                 </button>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>

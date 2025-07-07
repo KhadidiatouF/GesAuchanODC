@@ -22,5 +22,7 @@
             "email": "jamiral2019@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
 }
